@@ -1,5 +1,8 @@
 import streamlit as st
 import requests as req
+import os
+
+apiUrl : str | None = os.getenv("API_URL")
 
 if st.button("Menu"):
     st.switch_page("main.py")
@@ -10,8 +13,9 @@ userEmail : str = st.text_input("Ingresa email")
 verificacion : bool = len(userEmail.strip()) > 0 
 usuariosResponse : req.Response = req.Response()
 if st.button("Enviar"):
-    if(verificacion):
-        usuariosResponse = req.delete(f"http://3.145.91.184:8000/usuarios/{userEmail}")
+    if verificacion:
+        if apiUrl:
+            usuariosResponse = req.delete(f"{apiUrl}/{userEmail}")
         if usuariosResponse.status_code == 200:
             st.write("¡Borrado con éxito!")
     else:

@@ -1,6 +1,9 @@
 import streamlit as st
 import requests as req
 from models.usuario import Usuario
+import os
+
+apiUrl : str | None = os.getenv("API_URL")
 
 if st.button("Menu"):
     st.switch_page("main.py")
@@ -13,7 +16,8 @@ usuariosResponse : req.Response = req.Response()
 presionado : bool = False
 
 if st.button('Buscar'):
-    usuariosResponse = req.get(f"http://3.145.91.184:8000/usuarios/{email if len(email.strip()) > 0 else ' '}")
+    if apiUrl:
+        usuariosResponse = req.get(f"{apiUrl}/{email if len(email.strip()) > 0 else ' '}")
     presionado = True
 
 if presionado:

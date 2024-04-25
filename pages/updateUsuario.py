@@ -1,6 +1,9 @@
 import streamlit as st
 import requests as req
 from models.usuario import Usuario
+import os
+
+apiUrl : str | None = os.getenv("API_URL")
 
 if st.button("Menu"):
     st.switch_page("main.py")
@@ -20,7 +23,8 @@ if st.button("Enviar"):
         usuario.nombre = userNombre
         usuario.email = userEmail
         usuario.password = userPass
-        usuariosResponse = req.put(f"http://3.145.91.184:8000/usuarios/{userEmailBuscado}", json=usuario.convertirToDict())
+        if apiUrl:
+            usuariosResponse = req.put(f"{apiUrl}/{userEmailBuscado}", json=usuario.convertirToDict())
         if usuariosResponse.status_code == 200:
             st.write("¡Actualizado con éxito!")
     else:

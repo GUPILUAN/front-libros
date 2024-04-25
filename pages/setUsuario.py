@@ -1,6 +1,9 @@
 import streamlit as st
 import requests as req
 from models.usuario import Usuario
+import os
+
+apiUrl : str | None = os.getenv("API_URL")
 
 if st.button("Menu"):
     st.switch_page("main.py")
@@ -14,11 +17,12 @@ userPass : str = st.text_input("Ingresa password")
 verificacion : bool = len(userNombre.strip()) > 0 and len(userEmail.strip()) > 0 and len(userPass.strip()) > 0
 usuariosResponse : req.Response = req.Response()
 if st.button("Enviar"):
-    if(verificacion):
+    if(verificacion ):
         usuario.nombre = userNombre
         usuario.email = userEmail
         usuario.password = userPass
-        usuariosResponse = req.post('http://3.145.91.184:8000/usuarios/', json=usuario.convertirToDict())
+        if apiUrl:
+            usuariosResponse = req.post(apiUrl, json=usuario.convertirToDict())
         if usuariosResponse.status_code == 200:
             usuariosResponse.status_code = 201
             st.write("¡Usuario creado con éxito!")
