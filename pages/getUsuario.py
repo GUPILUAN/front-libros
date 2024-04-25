@@ -13,8 +13,9 @@ usuariosResponse : req.Response = req.Response()
 presionado : bool = False
 
 if st.button('Buscar'):
-    usuariosResponse = req.get(f"http:/3.145.91.184:8000/usuarios/{email if len(email) > 0 else " "}")
-    presionado = True
+    if len(email.strip()) > 0:
+        usuariosResponse = req.get(f"http:/3.145.91.184:8000/usuarios/{email}")
+        presionado = True
 
 if presionado:
     st.subheader("Usuario:")
