@@ -6,7 +6,7 @@ if st.button("Menu"):
     st.switch_page("main.py")
 
 st.subheader("Usuarios")
-usuariosResponse : req.Response = req.get("http://3.141.30.188:8000/usuarios/")
+usuariosResponse : req.Response = req.get("http://3.145.91.184:8000/usuarios/")
 
 usuarios : list | None = usuariosResponse.json()
 

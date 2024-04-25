@@ -13,7 +13,7 @@ usuariosResponse : req.Response = req.Response()
 presionado : bool = False
 
 if st.button('Buscar'):
-    usuariosResponse = req.get(f"http://3.141.30.188:8000/usuarios/{email if len(email) > 0 else " "}")
+    usuariosResponse = req.get(f"http:/3.145.91.184:8000/usuarios/{email if len(email) > 0 else " "}")
     presionado = True
 
 if presionado:

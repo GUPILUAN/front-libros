@@ -20,7 +20,7 @@ if st.button("Enviar"):
         usuario.nombre = userNombre
         usuario.email = userEmail
         usuario.password = userPass
-        usuariosResponse = req.put(f"http://3.141.30.188:8000/usuarios/{userEmailBuscado}", json=usuario.convertirToDict())
+        usuariosResponse = req.put(f"http://3.145.91.184:8000/usuarios/{userEmailBuscado}", json=usuario.convertirToDict())
         if usuariosResponse.status_code == 200:
             st.write("¡Actualizado con éxito!")
     else:
