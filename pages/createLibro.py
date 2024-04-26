@@ -5,7 +5,7 @@ import os
 
 apiUrl : str | None = os.getenv("API_URL")
 
-if st.button("Menu"):
+if st.button("Menú"):
     st.switch_page("main.py")
     
 st.subheader("Crear libro")
