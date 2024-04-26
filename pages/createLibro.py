@@ -23,7 +23,7 @@ if st.button("Enviar"):
         libro.autor = libroAutor
         libro.isbn = libroIsbn
         if apiUrl:
-            apiResponse = req.post(apiUrl, json= libro.convertirToDict())
+            apiResponse = req.post(f"{apiUrl}/", json= libro.convertirToDict())
         if apiResponse.status_code == 200:
             apiResponse.status_code = 201
             st.write("¡Libro creado con éxito!")

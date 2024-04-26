@@ -11,7 +11,7 @@ if st.button("Menú"):
 apiResponse : req.Response = req.Response()
 st.subheader("Libros")
 if apiUrl:
-    apiResponse  = req.get(apiUrl)
+    apiResponse  = req.get(f"{apiUrl}/")
 
 libros : list | None = apiResponse.json() if apiResponse.status_code == 200 else None
 
