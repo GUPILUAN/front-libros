@@ -18,5 +18,5 @@ Este frontend proporciona una interfaz amigable para que los usuarios puedan vis
 
 ## Uso
 
-1. Accede al frontend de la aplicación en el siguiente enlace: [https://gutierrez-front-libros.streamlit.app](https://gutierrez-front-libros.streamlit.app)
+1. Accede al frontend de la aplicación en el siguiente enlace: [https://gutierrez-libros-front.streamlit.app](https://gutierrez-libros-front.streamlit.app)
 2. Explora la lista de libros, busca libros por ISBN, borra, actualiza y agrega nuevos libros según sea necesario.
